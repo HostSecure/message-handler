@@ -22,7 +22,6 @@ include_directories(include)
 
 set(HEADERS
     include/MqttInterface.hpp
-    include/DatabaseHandler.hpp
     include/EdgeHandler.hpp
     include/MmiHandler.hpp
 )
@@ -30,7 +29,6 @@ set(HEADERS
 # Include source files
 set(SOURCES
     src/MqttInterface.cpp
-    src/DatabaseHandler.cpp
     src/EdgeHandler.cpp
     src/MmiHandler.cpp
 )
@@ -44,6 +42,3 @@ target_link_libraries(MessageHandler PRIVATE
     Qt6::Core
     Qt6::Mqtt
 )
-
-# Build unit tests
-#add_subdirectory(tests)

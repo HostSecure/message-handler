@@ -2,7 +2,9 @@
 #include <QCoreApplication>
 #include <QObject>
 
-#include "include/MqttHandler.hpp"
+#include "include/MqttInterface.hpp"
+#include "include/EdgeHandler.hpp"
+#include "include/DatabaseHandler.hpp"
 
 int main(int argc, char** argv)
 {
@@ -12,11 +14,15 @@ int main(int argc, char** argv)
     QString broker_addr = "127.0.0.1";
     quint16 broker_port = 1883;
 
-    /* Initialize a unique pointer to MQTT handler*/
-    QScopedPointer<Mqtt::Handler> mqtt_handler = QScopedPointer<Mqtt::Handler>(new Mqtt::Handler(broker_addr, broker_port));
+    /* Initialize a unique pointer to EdgeHandler */
+    QScopedPointer<MessageHandler::Gateway::EdgeHandler> edge_handler = QScopedPointer<MessageHandler::Gateway::EdgeHandler>(
+        new MessageHandler::Gateway::EdgeHandler(broker_addr, broker_port)
+    );
 
-    /* Establish connection with MQTT broker */
-    mqtt_handler->connect();
+    /* Initialize a unique pointer to DatabaseHandler */
+    QScopedPointer<MessageHandler::Gateway::DatabaseHandler> database_handler = QScopedPointer<MessageHandler::Gateway::DatabaseHandler>(
+        new MessageHandler::Gateway::DatabaseHandler(broker_addr, broker_port)
+    );
 
     a.exec();
 }
