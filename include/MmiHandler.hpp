@@ -14,6 +14,7 @@ namespace MessageHandler::Gateway
         void get_all_edges();
 
     public slots:
+        void new_message(QMqttMessage) override;
         void heartbeat_received();
     };
 }

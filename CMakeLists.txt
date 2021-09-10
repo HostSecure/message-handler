@@ -45,5 +45,12 @@ target_link_libraries(MessageHandler PRIVATE
     Qt6::Mqtt
 )
 
-# Build unit tests
-#add_subdirectory(tests)
+# Static library
+add_library(MessageHandlerStatic STATIC ${HEADERS} ${SOURCES})
+
+target_include_directories(MessageHandlerStatic PUBLIC include)
+
+target_link_libraries(MessageHandlerStatic PRIVATE
+    Qt6::Core
+    Qt6::Mqtt
+)

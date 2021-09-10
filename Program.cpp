@@ -20,9 +20,9 @@ int main(int argc, char** argv)
     );
 
     /* Initialize a unique pointer to DatabaseHandler */
-    QScopedPointer<MessageHandler::Gateway::DatabaseHandler> database_handler = QScopedPointer<MessageHandler::Gateway::DatabaseHandler>(
+    /* QScopedPointer<MessageHandler::Gateway::DatabaseHandler> database_handler = QScopedPointer<MessageHandler::Gateway::DatabaseHandler>(
         new MessageHandler::Gateway::DatabaseHandler(broker_addr, broker_port)
-    );
+    ); */
 
     a.exec();
 }

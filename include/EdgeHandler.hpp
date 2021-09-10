@@ -11,10 +11,14 @@ namespace MessageHandler::Gateway
 
     public:
         explicit EdgeHandler(QString&, quint16&);
+
+    signals:
         void register_new_edge(QString&);
 
     public slots:
         void new_message(QMqttMessage) override;
+        void broker_connected() override;
+        void on_new_edge(QString&);
         void heartbeat_received();
         //void on_get_edges();
     };

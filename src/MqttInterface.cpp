@@ -72,31 +72,6 @@ void MessageHandler::MqttInterface::subscribe(QString& topic)
     else qDebug() << "Failed to subscribe to topic" << topic;
 }
 
-/*
-void Mqtt::Handler::publish()
-{
-    QString topic_name = "sira/halla";
-
-    if (is_connected())
-    {
-        if (mqtt_client->publish(topic_name, "Heisann", true) == -1)
-        {
-            qInfo() << "Could not publish message";
-        }
-    }
-    else qInfo() << "Not connected to broker!";
-
-
-    auto subscribe = m_client->subscribe(topic_name);
-    if (!subscribe)
-    {
-        qInfo() << "Could not subscribe. Is there a valid connection?";
-        qInfo() << "Error:" << m_client->error();
-    }
-
-}
-*/
-
 QMqttClient::ClientState MessageHandler::MqttInterface::get_state() const
 {
     return mqtt_client->state();
@@ -116,18 +91,6 @@ void MessageHandler::MqttInterface::broker_connected()
     {
         this->subscribe(topic);
     }
-
-    /*
-    QString topic_name = "sira/halla";
-    QJsonObject jobject;
-    jobject["AccelerometerX"] = QString::number(10);
-    jobject["AccelerometerY"] = QString::number(11);
-    jobject["AccelerometerZ"] = QString::number(12);
-    jobject["AccelerometerS"] = QString::number(24);
-
-    this->publish(topic_name, jobject);
-    //mqtt_client->publish(QString::fromLatin1("qtds/%1").arg(m_id), doc.toJson());
-    */
 }
 
 void MessageHandler::MqttInterface::new_message(QMqttMessage _payload)

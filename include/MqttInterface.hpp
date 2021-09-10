@@ -38,7 +38,7 @@ namespace MessageHandler
 
     public slots:
         virtual void new_message(QMqttMessage);
-        void broker_connected();
+        virtual void broker_connected();
         void broker_disconnected();
         void state_changed();
         void client_error();

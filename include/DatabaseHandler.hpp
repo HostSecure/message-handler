@@ -12,6 +12,9 @@ namespace MessageHandler::Gateway
     public:
         explicit DatabaseHandler(QString&, quint16&);
 
+    signals:
+        void new_edge(QByteArray);
+
     public slots:
         void new_message(QMqttMessage) override;
         void heartbeat_received();
